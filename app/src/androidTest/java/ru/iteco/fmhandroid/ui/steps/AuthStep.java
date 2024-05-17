@@ -19,7 +19,8 @@ import ru.iteco.fmhandroid.ui.viewElements.AuthElements;
 
 public class AuthStep {
     AuthElements authElements = new AuthElements();
-
+    public static int wrongAuth = R.string.wrong_login_or_password;
+    public static int emptyAuth = R.string.empty_login_or_password;
     public int enterButtonId = R.id.enter_button;
 
     MainStep mainStep = new MainStep();
@@ -50,13 +51,13 @@ public class AuthStep {
     @Step("Проверка всплывающего сообщения при пустом логине и пароле")
     public void emptyLoginAndPassword() {
         Allure.step("Проверка всплывающего сообщения при пустом логине и пароле");
-        waitUntilVisible(checkToast(R.string.empty_login_or_password, true));
+        waitUntilVisible(checkToast(emptyAuth, true));
     }
 
     @Step("Проверка всплывающего сообщения при невалидном логине и пароле")
     public void wrongLoginandPassword() {
         Allure.step("Проверка всплывающего сообщения при невалидном логине и пароле");
-        waitUntilVisible(checkToast(R.string.wrong_login_or_password, true));
+        waitUntilVisible(checkToast(wrongAuth, true));
     }
 
     public boolean logIn() {

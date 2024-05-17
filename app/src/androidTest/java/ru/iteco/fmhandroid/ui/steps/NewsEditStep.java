@@ -39,6 +39,9 @@ import ru.iteco.fmhandroid.ui.viewElements.EditNewsElements;
 public class NewsEditStep {
     EditNewsElements editNewsElements = new EditNewsElements();
     public static int confirmDeleteNewsButtonId = android.R.id.button1;
+    public static int  delNewsItem = R.id.delete_news_item_image_view;
+    public static int newsItemCard = R.id.news_item_material_card_view;
+    public static int empty_fields = R.string.empty_fields;
     NewsStep newsStep = new NewsStep();
 
 
@@ -167,8 +170,8 @@ public class NewsEditStep {
     public void deleteNews(String tittle) {
         Allure.step("Удаление новости");
         findNewsWithTittle(tittle);
-        onView(allOf(withId(R.id.news_item_material_card_view), hasDescendant(withText(tittle))))
-                .perform(clickChildViewWithId(R.id.delete_news_item_image_view));
+        onView(allOf(withId(newsItemCard), hasDescendant(withText(tittle))))
+                .perform(clickChildViewWithId(delNewsItem));
         confirmDelete();
     }
 
@@ -207,6 +210,6 @@ public class NewsEditStep {
     @Step("Видимость сообщения об ошибке при создании новости с пустыми полями")
     public void visibleErrorNotBeEmpty() {
         Allure.step("Видимость сообщения об ошибке при создании новости с пустыми полями");
-        waitUntilVisible(checkToast(R.string.empty_fields, true));
+        waitUntilVisible(checkToast(empty_fields, true));
     }
 }

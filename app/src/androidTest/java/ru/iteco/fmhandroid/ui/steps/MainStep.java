@@ -14,17 +14,18 @@ import ru.iteco.fmhandroid.ui.viewElements.MainElements;
 
 public class MainStep {
     MainElements mainElements = new MainElements();
-    public int mainMenuButtId = R.id.main_menu_image_button;
-    public int allNewsButtId = R.id.all_news_text_view;
-    public int LoginOutId = R.id.authorization_image_button;
-    public int quotesButtID = R.id.our_mission_image_button;
+    public static int mainMenuButtId = R.id.main_menu_image_button;
+    public static int allNewsButtId = R.id.all_news_text_view;
+    public static int LoginOutId = R.id.authorization_image_button;
+    public static int quotesButtID = R.id.our_mission_image_button;
+    public static int title = android.R.id.title;
 
     @Step("Выход из аккаунта")
     public void logOut() {
         Allure.step("Выход из аккаунта");
         onView(withId(LoginOutId)).perform(click());
-        onView(withId(android.R.id.title)).check(matches(isDisplayed()));
-        onView(withId(android.R.id.title)).perform(click());
+        onView(withId(title)).check(matches(isDisplayed()));
+        onView(withId(title)).perform(click());
     }
 
     @Step("Переход в Новости через главное меню")
